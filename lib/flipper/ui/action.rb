@@ -1,6 +1,5 @@
 require 'forwardable'
 require 'flipper/ui/error'
-require 'flipper/ui/eruby'
 require 'json'
 
 module Flipper
@@ -209,7 +208,7 @@ module Flipper
         raise "Template does not exist: #{path}" unless path.exist?
 
         contents = path.read
-        compiled = Eruby.new(contents)
+        compiled = ERB.new(contents)
         compiled.result proc {}.binding
       end
 
